@@ -28,7 +28,7 @@ export function TermsOfServiceContent() {
         through the service. By submitting, posting, or displaying content, you
         grant us a worldwide, non-exclusive license to use, copy, reproduce,
         process, adapt, modify, publish, transmit, display, and distribute such
-        content.{" "}
+        content.{' '}
       </p>
 
       {/* Add the rest of the Terms of Service content here */}

@@ -1,45 +1,45 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { useActionState, useEffect, useState } from "react";
-import { toast } from "@/components/toast";
-import { SubmitButton } from "@/components/submit-button";
-import { login, type LoginActionState } from "../actions";
-import { LoginForm } from "@/components/login-form2";
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { useActionState, useEffect, useState } from 'react';
+import { toast } from '@/components/toast';
+import { SubmitButton } from '@/components/submit-button';
+import { login, type LoginActionState } from '../actions';
+import { LoginForm } from '@/components/login-form2';
 
 export default function Page() {
   const router = useRouter();
 
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState('');
   const [isSuccessful, setIsSuccessful] = useState(false);
 
   const [state, formAction] = useActionState<LoginActionState, FormData>(
     login,
     {
-      status: "idle",
-    }
+      status: 'idle',
+    },
   );
 
   useEffect(() => {
-    if (state.status === "failed") {
+    if (state.status === 'failed') {
       toast({
-        type: "error",
-        description: "Invalid credentials!",
+        type: 'error',
+        description: 'Invalid credentials!',
       });
-    } else if (state.status === "invalid_data") {
+    } else if (state.status === 'invalid_data') {
       toast({
-        type: "error",
-        description: "Failed validating your submission!",
+        type: 'error',
+        description: 'Failed validating your submission!',
       });
-    } else if (state.status === "success") {
+    } else if (state.status === 'success') {
       setIsSuccessful(true);
-      router.push("/dashboard");
+      router.push('/dashboard');
     }
   }, [state.status]);
 
   const handleSubmit = (formData: FormData) => {
-    setEmail(formData.get("email") as string);
+    setEmail(formData.get('email') as string);
     formAction(formData);
   };
 
@@ -59,7 +59,7 @@ export default function Page() {
             >
               Register
             </Link>
-            {" for free."}
+            {' for free.'}
           </p>
         </LoginForm>
       </div>

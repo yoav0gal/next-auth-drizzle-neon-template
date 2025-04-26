@@ -1,5 +1,5 @@
-import React from "react";
-import Link from "next/link";
+import React from 'react';
+import Link from 'next/link';
 import {
   Dialog,
   DialogContent,
@@ -7,7 +7,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog";
+} from '@/components/ui/dialog';
 
 interface PolicyModalProps {
   trigger: React.ReactNode;

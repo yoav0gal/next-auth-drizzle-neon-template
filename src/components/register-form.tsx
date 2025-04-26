@@ -1,17 +1,17 @@
-import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "./ui/input";
-import { Label } from "./ui/label";
-import Form from "next/form";
-import { signInWithProvider } from "@/app/(auth)/actions";
-import { PolicysFooter } from "./policys-footer";
+import { cn } from '@/lib/utils';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Input } from './ui/input';
+import { Label } from './ui/label';
+import Form from 'next/form';
+import { signInWithProvider } from '@/app/(auth)/actions';
+import { PolicysFooter } from './policys-footer';
 
 export function RegisterForm({
   action,
   children,
-  defaultEmail = "",
-  defaultName = "",
+  defaultEmail = '',
+  defaultName = '',
   className,
   ...props
 }: {
@@ -24,7 +24,7 @@ export function RegisterForm({
   className?: string;
 }) {
   return (
-    <div className={cn("flex flex-col gap-6", className)} {...props}>
+    <div className={cn('flex flex-col gap-6', className)} {...props}>
       <Card>
         <CardHeader className="text-center">
           <CardTitle className="text-xl">Create an account</CardTitle>
@@ -39,7 +39,7 @@ export function RegisterForm({
                   type="button"
                   onClick={async (e) => {
                     e.preventDefault();
-                    await signInWithProvider("google");
+                    await signInWithProvider('google');
                   }}
                 >
                   <svg

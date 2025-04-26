@@ -1,6 +1,6 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import Link from "next/link";
-import { TermsOfServiceContent } from "@/components/terms-of-service-content";
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import Link from 'next/link';
+import { TermsOfServiceContent } from '@/components/terms-of-service-content';
 
 export default function TermsOfService() {
   return (

@@ -1,6 +1,6 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import Link from "next/link";
-import { PrivacyPolicyContent } from "@/components/privacy-policy-content";
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import Link from 'next/link';
+import { PrivacyPolicyContent } from '@/components/privacy-policy-content';
 
 export default function PrivacyPolicy() {
   return (

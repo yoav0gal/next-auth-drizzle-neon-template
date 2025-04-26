@@ -1,14 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { compare } from "bcryptjs";
-import NextAuth, { type User, type Session } from "next-auth";
-import Credentials from "next-auth/providers/credentials";
-
-// import Google from "next-auth/providers/google";
-// import GitHub from "next-auth/providers/github";
-
-import { getUser } from "@/lib/db/queries/users";
-import { authConfig } from "./auth.config";
-import { DUMMY_PASSWORD } from "@/lib/constants";
+import { compare } from 'bcryptjs';
+import NextAuth, { type User, type Session } from 'next-auth';
+import Credentials from 'next-auth/providers/credentials';
+import { getUser } from '@/lib/db/queries/users';
+import { authConfig } from './auth.config';
+import { DUMMY_PASSWORD } from '@/lib/constants';
 
 interface ExtendedSession extends Session {
   user: User;
@@ -25,8 +21,8 @@ export const {
     ...(authConfig.providers || []),
     Credentials({
       credentials: {
-        email: { label: "Email", type: "email" },
-        password: { label: "Password", type: "password" },
+        email: { label: 'Email', type: 'email' },
+        password: { label: 'Password', type: 'password' },
       },
       async authorize({ email, password }: any) {
         const users = await getUser(email);
@@ -75,5 +71,5 @@ export const {
       return session;
     },
   },
-  session: { strategy: "jwt" },
+  session: { strategy: 'jwt' },
 });
