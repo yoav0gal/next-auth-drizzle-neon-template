@@ -19,6 +19,10 @@ export const authConfig = {
       const isLoggedIn = !!auth?.user;
       const isOnRegister = nextUrl.pathname.startsWith("/register");
       const isOnLogin = nextUrl.pathname.startsWith("/login");
+      const isOnPrivacy = nextUrl.pathname.startsWith("/privacy");
+      const isOnTerms = nextUrl.pathname.startsWith("/terms");
+
+      if (isOnPrivacy || isOnTerms) return true;
 
       if (!isLoggedIn && !(isOnLogin || isOnRegister)) {
         return Response.redirect(new URL("/login", nextUrl as unknown as URL));
@@ -30,6 +34,9 @@ export const authConfig = {
         );
       }
       return true;
+    },
+    async redirect() {
+      return "/dashboard";
     },
   },
 } satisfies NextAuthConfig;

@@ -46,6 +46,10 @@ export const login = async (
   }
 };
 
+export const signInWithProvider = async (provider: string) => {
+  await signIn(provider, { callbackUrl: "/dashboard" });
+};
+
 export interface RegisterActionState {
   status:
     | "idle"

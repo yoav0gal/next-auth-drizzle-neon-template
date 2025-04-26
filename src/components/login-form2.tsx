@@ -1,17 +1,16 @@
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "./ui/input";
-import { Label } from "./ui/label";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import Form from "next/form";
 import { signInWithProvider } from "@/app/(auth)/actions";
 import { PolicysFooter } from "./policys-footer";
 
-export function RegisterForm({
+export function LoginForm({
   action,
   children,
   defaultEmail = "",
-  defaultName = "",
   className,
   ...props
 }: {
@@ -20,14 +19,13 @@ export function RegisterForm({
   >;
   children: React.ReactNode;
   defaultEmail?: string;
-  defaultName?: string;
   className?: string;
 }) {
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <Card>
         <CardHeader className="text-center">
-          <CardTitle className="text-xl">Create an account</CardTitle>
+          <CardTitle className="text-xl">Welcome back</CardTitle>
         </CardHeader>
         <CardContent>
           <Form action={action} className="flex flex-col gap-4">
@@ -52,7 +50,7 @@ export function RegisterForm({
                       fill="currentColor"
                     />
                   </svg>
-                  Register with Google
+                  Login with Google
                 </Button>
               </div>
               <div className="relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t after:border-border">
@@ -61,23 +59,6 @@ export function RegisterForm({
                 </span>
               </div>
               <div className="grid gap-6">
-                <div className="grid gap-2">
-                  <Label
-                    htmlFor="name"
-                    className="text-zinc-600 font-normal dark:text-zinc-400"
-                  >
-                    Name
-                  </Label>
-                  <Input
-                    id="name"
-                    name="name"
-                    className="bg-muted text-md md:text-sm"
-                    type="text"
-                    placeholder="Peter Griffin"
-                    defaultValue={defaultName}
-                    required
-                  />
-                </div>
                 <div className="grid gap-2">
                   <Label
                     htmlFor="email"

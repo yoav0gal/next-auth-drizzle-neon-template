@@ -4,9 +4,9 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useActionState, useEffect, useState } from "react";
 import { toast } from "@/components/toast";
-import { LogInForm } from "@/components/login-form";
 import { SubmitButton } from "@/components/submit-button";
 import { login, type LoginActionState } from "../actions";
+import { LoginForm } from "@/components/login-form2";
 
 export default function Page() {
   const router = useRouter();
@@ -47,9 +47,9 @@ export default function Page() {
     <div className="flex h-dvh w-screen items-start pt-12 md:pt-0 md:items-center justify-center bg-background">
       <div className="w-full max-w-md overflow-hidden rounded-2xl flex flex-col gap-12">
         <div className="flex flex-col items-center justify-center gap-2 px-4 text-center sm:px-16">
-          <h3 className="text-xl font-semibold dark:text-zinc-50">Log In</h3>
+          {/* <h3 className="text-xl font-semibold dark:text-zinc-50">Log In</h3> */}
         </div>
-        <LogInForm action={handleSubmit} defaultEmail={email}>
+        <LoginForm action={handleSubmit} defaultEmail={email}>
           <SubmitButton isSuccessful={isSuccessful}>Log In</SubmitButton>
           <p className="text-center text-sm text-gray-600 mt-4 dark:text-zinc-400">
             {"Don't have an account? "}
@@ -61,7 +61,7 @@ export default function Page() {
             </Link>
             {" for free."}
           </p>
-        </LogInForm>
+        </LoginForm>
       </div>
     </div>
   );
