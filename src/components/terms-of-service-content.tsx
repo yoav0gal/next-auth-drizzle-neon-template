@@ -1,6 +1,3 @@
-// src/components/TermsOfServiceContent.tsx
-import React from "react";
-
 export function TermsOfServiceContent() {
   return (
     <div className="prose prose-lg dark:prose-invert max-w-none space-y-8">

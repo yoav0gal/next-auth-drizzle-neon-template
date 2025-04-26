@@ -1,6 +1,3 @@
-// src/components/PrivacyPolicyContent.tsx
-import React from "react";
-
 export function PrivacyPolicyContent() {
   return (
     <div className="prose prose-lg dark:prose-invert max-w-none space-y-8">

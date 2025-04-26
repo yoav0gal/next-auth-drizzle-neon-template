@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
+import { SessionProvider } from "next-auth/react";
+import { UserNav } from "@/components/user-nav";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,7 +30,23 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <main>{children}</main>
+          <SessionProvider>
+            <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+              <div className="flex h-14 w-full items-center justify-between px-4 sm:px-6 lg:px-8">
+                {/* Left side: App Name */}
+                <div className="flex items-center space-x-4">
+                  <span className="font-bold sm:inline-block">
+                    next-auth-drizzle-neon-template
+                  </span>
+                </div>
+                {/* Right side: UserNav */}
+                <div className="flex items-center space-x-4">
+                  <UserNav />
+                </div>
+              </div>
+            </header>
+            <main className="flex-1">{children}</main>
+          </SessionProvider>
         </ThemeProvider>
       </body>
     </html>
