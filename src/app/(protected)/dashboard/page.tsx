@@ -1,5 +1,5 @@
-import { auth } from '@/app/(auth)/auth';
-import { redirect } from 'next/navigation';
+import { auth } from "@/app/(auth)/auth";
+import { redirect } from "next/navigation";
 import {
   Card,
   CardHeader,
@@ -7,15 +7,15 @@ import {
   CardDescription,
   CardContent,
   CardFooter,
-} from '@/components/ui/card';
-import { ShieldCheck, Pencil, Home } from 'lucide-react';
-import Link from 'next/link';
-import { Button } from '@/components/ui/button';
+} from "@/components/ui/card";
+import { ShieldCheck, Pencil, Home } from "lucide-react";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 export default async function DashboardPage() {
   const session = await auth();
   if (!session || !session.user) {
-    redirect('/login?callbackUrl=/dashboard');
+    redirect("/login?callbackUrl=/dashboard");
   }
 
   const userName = session.user.name || session.user.email;
@@ -37,7 +37,7 @@ export default async function DashboardPage() {
           <div className="flex items-center justify-center rounded-md border border-dashed border-muted-foreground/50 p-4 bg-background/50">
             <Pencil className="h-5 w-5 mr-2 text-muted-foreground" />
             <p className="text-sm text-muted-foreground">
-              Get started by editing{' '}
+              Get started by editing{" "}
               <code className="font-mono bg-muted px-1 py-0.5 rounded">
                 src/app/(protected)/dashboard/page.tsx
               </code>
