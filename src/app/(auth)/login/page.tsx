@@ -1,46 +1,43 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { useActionState, useEffect, useState } from "react";
-import { toast } from "@/components/toast";
-import { SubmitButton } from "@/components/submit-button";
-import { login, type LoginActionState } from "../actions";
-import { LoginForm } from "@/components/login-form";
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { useActionState, useEffect, useState } from 'react';
+import { toast } from '@/components/toast';
+import { SubmitButton } from '@/components/submit-button';
+import { login, type LoginActionState } from '../actions';
+import { LoginForm } from '@/components/login-form';
+import { useSession } from 'next-auth/react';
 
 export default function Page() {
   const router = useRouter();
 
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState('');
   const [isSuccessful, setIsSuccessful] = useState(false);
+  const { update: updateSession } = useSession();
 
   const [state, formAction] = useActionState<LoginActionState, FormData>(
     login,
     {
-      status: "idle",
-    }
+      status: 'idle',
+    },
   );
 
   useEffect(() => {
-    if (state.status === "failed") {
+    if (state.status === 'failed') {
       toast({
-        type: "error",
-        description: "Invalid credentials!",
+        type: 'error',
+        description: state.message || 'Invalid credentials',
       });
-    } else if (state.status === "invalid_data") {
-      toast({
-        type: "error",
-        description: "Failed validating your submission!",
-      });
-    } else if (state.status === "success") {
+    } else if (state.status === 'success') {
       setIsSuccessful(true);
-      router.push("/dashboard");
-      router.refresh();
+      updateSession();
+      router.push('/dashboard');
     }
-  }, [state.status, router]);
+  }, [state.status, router, state.message]);
 
   const handleSubmit = (formData: FormData) => {
-    setEmail(formData.get("email") as string);
+    setEmail(formData.get('email') as string);
     formAction(formData);
   };
 
@@ -58,7 +55,7 @@ export default function Page() {
             >
               Register
             </Link>
-            {" for free."}
+            {' for free.'}
           </p>
         </LoginForm>
       </div>

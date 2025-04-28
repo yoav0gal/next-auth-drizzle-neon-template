@@ -9,21 +9,26 @@ const iconsByType: Record<'success' | 'error', ReactNode> = {
   error: <CircleX className="w-4 h-4 text-red-500" />,
 };
 
-export function toast(props: Omit<ToastProps, 'id'>) {
+interface ToastProps {
+  id?: string | number;
+  type: 'success' | 'error';
+  description: string;
+}
+
+export function toast({ type, description }: ToastProps) {
   return sonnerToast.custom((id) => (
-    <Toast id={id} type={props.type} description={props.description} />
+    <Toast id={id} type={type} description={description} />
   ));
 }
 
 function Toast(props: ToastProps) {
-  const { id, type, description } = props;
+  const { type, description } = props;
 
   return (
     <div className="flex w-full toast-mobile:w-[356px] justify-center">
       <div
         data-testid="toast"
-        key={id}
-        className="bg-zinc-100 p-3 rounded-lg w-full toast-mobile:w-fit flex flex-row gap-2 items-center"
+        className="bg-zinc-100 dark:bg-zinc-800 p-3 rounded-lg w-full toast-mobile:w-fit flex flex-row gap-2 items-center"
       >
         <div
           data-type={type}
@@ -31,14 +36,10 @@ function Toast(props: ToastProps) {
         >
           {iconsByType[type]}
         </div>
-        <div className="text-zinc-950 text-sm">{description}</div>
+        <div className="text-zinc-950 dark:text-zinc-50 text-sm">
+          {description}
+        </div>
       </div>
     </div>
   );
-}
-
-interface ToastProps {
-  id: string | number;
-  type: 'success' | 'error';
-  description: string;
 }

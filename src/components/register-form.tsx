@@ -7,12 +7,19 @@ import Form from 'next/form';
 import { signInWithProvider } from '@/app/(auth)/actions';
 import { PolicysFooter } from './policys-footer';
 
+interface FieldErrors {
+  email?: string;
+  password?: string;
+  name?: string;
+}
+
 export function RegisterForm({
   action,
   children,
   defaultEmail = '',
   defaultName = '',
   className,
+  fieldErrors,
   ...props
 }: {
   action: NonNullable<
@@ -22,6 +29,7 @@ export function RegisterForm({
   defaultEmail?: string;
   defaultName?: string;
   className?: string;
+  fieldErrors?: FieldErrors;
 }) {
   return (
     <div className={cn('flex flex-col gap-6', className)} {...props}>
@@ -77,6 +85,11 @@ export function RegisterForm({
                     defaultValue={defaultName}
                     required
                   />
+                  {fieldErrors?.name && (
+                    <p className="text-sm text-red-500 mt-1">
+                      {fieldErrors.name}
+                    </p>
+                  )}
                 </div>
                 <div className="grid gap-2">
                   <Label
@@ -96,6 +109,11 @@ export function RegisterForm({
                     autoFocus
                     defaultValue={defaultEmail}
                   />
+                  {fieldErrors?.email && (
+                    <p className="text-sm text-red-500 mt-1">
+                      {fieldErrors.email}
+                    </p>
+                  )}
                 </div>
                 <div className="grid gap-2">
                   <div className="flex items-center">
@@ -113,6 +131,11 @@ export function RegisterForm({
                     type="password"
                     required
                   />
+                  {fieldErrors?.password && (
+                    <p className="text-sm text-red-500 mt-1">
+                      {fieldErrors.password}
+                    </p>
+                  )}
                 </div>
                 {children}
               </div>
