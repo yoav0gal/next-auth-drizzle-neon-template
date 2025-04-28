@@ -23,7 +23,10 @@ A starter template for Next.js using the App Router, pre-configured with Auth.js
 1.  **Create your app using this template:**
     ```bash
     npx create-next-app@latest your-project-name --use-pnpm --example "https://github.com/yoav0gal/next-auth-drizzle-neon-template"
-    cd your-project-name
+    ```
+
+    ```bash
+     cd your-project-name
     ```
 
 2.  **Install Dependencies (if needed):**
