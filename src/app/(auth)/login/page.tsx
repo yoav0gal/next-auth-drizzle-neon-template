@@ -26,6 +26,7 @@ export default function Page() {
   useEffect(() => {
     if (state.status === 'failed') {
       toast({
+        id: Date.now(),
         type: 'error',
         description: state.message || 'Invalid credentials',
       });
@@ -34,7 +35,7 @@ export default function Page() {
       updateSession();
       router.push('/dashboard');
     }
-  }, [state.status, router, state.message]);
+  }, [state, router]);
 
   const handleSubmit = (formData: FormData) => {
     setEmail(formData.get('email') as string);
