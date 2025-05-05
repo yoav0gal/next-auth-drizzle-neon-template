@@ -8,7 +8,7 @@ import {
   CardContent,
   CardFooter,
 } from '@/components/ui/card';
-import { ShieldCheck, Pencil, Home } from 'lucide-react';
+import { ShieldCheck, Pencil } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 
